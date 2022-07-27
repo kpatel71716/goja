@@ -16,3 +16,9 @@ func TestNumberEquality(t *testing.T) {
 		t.Fatal("values are not equal")
 	}
 }
+
+func TestInt64SameAsFloat(t *testing.T) {
+	if !valueInt64(5).SameAs(valueFloat(5.0)) {
+		t.Fatal("values are not equal")
+	}
+}
