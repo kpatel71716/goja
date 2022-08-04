@@ -415,5 +415,8 @@ func TestFloatToValue(t *testing.T) {
 		if tc.expectedValue != actual {
 			t.Fatalf("%v is not equal to %v", actual, tc.expectedValue)
 		}
+		if tc.expectedSign != math.Signbit(actual.ToFloat()) {
+			t.Fatalf("%v sign bit incorrect", actual)
+		}
 	}
 }
