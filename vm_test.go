@@ -382,41 +382,32 @@ func TestInt64ToValue(t *testing.T) {
 func TestFloatToValue(t *testing.T) {
 	for _, tc := range []struct {
 		f             float64
-		expectedSign  bool
 		expectedValue Value
 	}{
 		{
 			0.0,
-			false,
 			valueFloat(0),
 		},
 		{
 			-0.0,
-			true,
 			valueFloat(-0),
 		},
 		{
 			2.0000,
-			false,
 			valueFloat(2),
 		},
 		{
 			2.001,
-			false,
 			valueFloat(2.001),
 		},
 		{
 			1.234000,
-			false,
 			valueFloat(1.234),
 		},
 	} {
 		actual := floatToValue(tc.f)
 		if tc.expectedValue != actual {
 			t.Fatalf("%v is not equal to %v", actual, tc.expectedValue)
-		}
-		if tc.expectedSign != math.Signbit(actual.ToFloat()) {
-			t.Fatalf("%v sign bit incorrect", actual)
 		}
 	}
 }
