@@ -285,16 +285,7 @@ func (i valueInt) ToNumber() Value {
 }
 
 func (i valueInt) SameAs(other Value) bool {
-	switch o := other.(type) {
-	case valueInt:
-		return i == o
-	case valueInt64:
-		return i == valueInt(o)
-	case valueFloat:
-		return float64(i) == float64(o)
-	}
-
-	return false
+	return i.StrictEquals(other)
 }
 
 func (i valueInt) Equals(other Value) bool {
