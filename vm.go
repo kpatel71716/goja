@@ -229,9 +229,9 @@ type instruction interface {
 }
 
 func (vm *vm) getFuncName() unistring.String {
-	vm.funcNameLock.Lock()
+	vm.funcNameLock.RLock()
 	s := vm.funcName
-	vm.funcNameLock.Unlock()
+	vm.funcNameLock.RUnlock()
 	return s
 }
 
